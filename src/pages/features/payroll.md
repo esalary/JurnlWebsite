@@ -9,6 +9,7 @@ screenshots:
     alt: "Pay run"
     caption: "A weekly pay run for three people: hourly, salaried and a casual. Overtime and an allowance under Leave & items; gross, super, PAYG and take home worked out; pay slips ready to email."
   - file: pay-slip.png
+    kind: doc
     alt: "Pay slip"
     caption: "A one-page pay slip with earnings, tax, net pay, year to date and where the money went, in the company's colours."
 ---

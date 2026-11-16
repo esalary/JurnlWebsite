@@ -9,6 +9,7 @@ screenshots:
     alt: "Invoice with payments and credit notes"
     caption: "A $1,650 invoice with a $500 part payment and two credit notes; Jurnl shows $710 still owing."
   - file: credit-note.png
+    kind: doc
     alt: "Credit note PDF"
     caption: "The credit note the customer receives, showing which invoice it reduces and the GST."
 ---

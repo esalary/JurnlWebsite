@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBand from '../components/CtaBand.astro';
-import Screenshot from '../components/Screenshot.astro';
+import ScreenshotStack from '../components/ScreenshotStack.astro';
 import { product } from '../data/site';
 
 const differentiators = [
@@ -80,7 +80,14 @@ const faqs = [
         </div>
       </div>
       <div class="split__side" style="flex-basis: 520px">
-        <Screenshot file="pay-run.png" alt="Pay run" caption="A weekly pay run for three people: gross, super, PAYG and take home worked out." />
+        <ScreenshotStack
+          shots={[
+            { file: 'pay-run.png', alt: 'A weekly pay run in Jurnl' },
+            { file: 'invoice-payments.png', alt: 'An invoice with payments and credit notes' },
+            { file: 'gst-detail.png', alt: 'The GST detail report' },
+          ]}
+          caption="Pay runs, invoices and your BAS in one app. Shown with a made-up business, Bob's Plumbing."
+        />
       </div>
     </div>
   </section>

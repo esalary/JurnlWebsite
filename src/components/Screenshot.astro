@@ -1,23 +1,33 @@
 ---
-// A screenshot in an app-window frame. Until the image file exists, a labelled placeholder shows instead.
+// A screenshot in an app-window frame, or a PDF shown as a page (kind="doc").
+// Until the image file exists, a labelled placeholder shows instead.
 import fs from 'node:fs';
 import path from 'node:path';
 
 interface Props {
-  file: string; // file name in public/images/screens/
+  file: string; // file name in public/images/screens/ (.png; a .webp of the same name is used when present)
   alt: string;
   caption?: string;
+  kind?: 'app' | 'doc';
+  class?: string;
+  eager?: boolean;
 }
-const { file, alt, caption } = Astro.props;
-const exists = fs.existsSync(path.join(process.cwd(), 'public/images/screens', file));
+const { file, alt, caption, kind = 'app', class: extra = '', eager = false } = Astro.props;
+const dir = path.join(process.cwd(), 'public/images/screens');
+const exists = fs.existsSync(path.join(dir, file));
+const webp = file.replace(/\.png$/, '.webp');
+const hasWebp = webp !== file && fs.existsSync(path.join(dir, webp));
 ---
 
-<figure class="shot">
+<figure class={`shot shot--${kind} ${extra}`}>
   <div class="shot__frame">
-    <div class="shot__bar" aria-hidden="true"><span></span><span></span><span></span></div>
+    {kind === 'app' && <div class="shot__bar" aria-hidden="true"><span></span><span></span><span></span></div>}
     {
       exists ? (
-        <img src={`/images/screens/${file}`} alt={alt} loading="lazy" />
+        <picture>
+          {hasWebp && <source srcset={`/images/screens/${webp}`} type="image/webp" />}
+          <img src={`/images/screens/${file}`} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+        </picture>
       ) : (
         <div class="shot__placeholder" role="img" aria-label={`${alt} (screenshot to come)`}>
           <img src="/images/logo/jurnl-mark.svg" alt="" width="40" height="40" />

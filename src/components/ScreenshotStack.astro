@@ -1,0 +1,34 @@
+---
+// App screenshots stacked like a deck: the first in front, the others behind it,
+// each a little lower and narrower so their bottom edges show underneath.
+import Screenshot from './Screenshot.astro';
+
+interface Shot {
+  file: string;
+  alt: string;
+}
+interface Props {
+  shots: Shot[]; // front first
+  caption?: string;
+}
+const { shots, caption } = Astro.props;
+const [front, ...behind] = shots;
+---
+
+<figure class="shot-stack" style={`--behind: ${behind.length}`}>
+  <div class="shot-stack__deck">
+    {
+      behind
+        .map((s, i) => (
+          <div class="shot-stack__back" style={`--i: ${i + 1}`} aria-hidden="true">
+            <Screenshot file={s.file} alt="" />
+          </div>
+        ))
+        .reverse()
+    }
+    <div class="shot-stack__front">
+      <Screenshot file={front.file} alt={front.alt} eager />
+    </div>
+  </div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

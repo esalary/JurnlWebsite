@@ -1400,3 +1400,55 @@ p {
 .prose .shot {
   margin-block: 32px;
 }
+
+/* PDFs shown as paper pages */
+.shot--doc .shot__frame {
+  border-radius: 4px;
+  max-width: 440px;
+  box-shadow: 0 18px 40px rgba(20, 27, 49, 0.18);
+}
+.prose .shot--doc {
+  align-items: flex-start;
+}
+
+/* stacked screenshots: cards behind peek out underneath the front one */
+.shot-stack {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.shot-stack__deck {
+  position: relative;
+  padding-bottom: calc(var(--behind) * 18px);
+}
+.shot-stack__front {
+  position: relative;
+  z-index: 3;
+}
+.shot-stack__back {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: calc(3 - var(--i));
+  transform-origin: 50% 100%;
+  transform: translateY(calc(var(--i) * 18px)) scale(calc(1 - var(--i) * 0.06));
+  opacity: calc(1 - var(--i) * 0.12);
+}
+.shot-stack__back .shot__frame {
+  box-shadow: 0 12px 30px rgba(20, 27, 49, 0.25);
+}
+/* keep every card in the deck the same shape */
+.shot-stack .shot__frame picture,
+.shot-stack .shot__frame img {
+  display: block;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  object-fit: cover;
+  object-position: top left;
+}
+.shot-stack figcaption {
+  font-size: 0.875rem;
+}
+.hero .shot-stack figcaption {
+  color: rgba(247, 247, 242, 0.75);
+}
