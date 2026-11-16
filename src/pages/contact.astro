@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { product } from '../data/site';
+---
+
+<BaseLayout title="Contact" description="Contact the Jurnl team with questions about the software, the free trial or pricing.">
+  <section class="page-hero">
+    <div class="container stack" style="--gap: 18px">
+      <h1 class="h1" style="font-size: clamp(2.125rem, 4.2vw, 3.25rem)">Contact</h1>
+      <p class="lead muted">Questions about Jurnl, the free trial or pricing? Send us a message.</p>
+    </div>
+  </section>
+
+  <div class="container page-body">
+    <aside class="page-body__nav stack" style="--gap: 20px">
+      <div class="stack" style="--gap: 4px">
+        <strong>Email</strong>
+        <a href={`mailto:${product.email}`}>{product.email}</a>
+      </div>
+      <div class="stack" style="--gap: 4px">
+        <strong>Location</strong>
+        <span>{product.location}</span>
+      </div>
+      <div class="stack" style="--gap: 4px">
+        <strong>Company</strong>
+        <span>{product.company}<br />ABN {product.abn}</span>
+      </div>
+    </aside>
+
+    <div class="page-body__content">
+      <!-- TODO: /api/contact is an Azure Function to be added with the trial form. -->
+      <form class="form" method="post" action="/api/contact">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="topic">About</label>
+          <select id="topic" name="topic">
+            <option>A question about Jurnl</option>
+            <option>The free trial</option>
+            <option>Pricing</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <p class="muted" style="font-size: 0.875rem">We use your details only to respond to your enquiry. See our <a href="/privacy/">privacy policy</a>.</p>
+        <button class="btn btn--primary" type="submit" style="justify-self: start">Send message</button>
+      </form>
+    </div>
+  </div>
+</BaseLayout>

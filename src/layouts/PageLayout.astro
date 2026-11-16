@@ -1,0 +1,52 @@
+---
+// Layout for content pages written in Markdown.
+// Front matter fields: title, description, section, intro, draft, screenshot
+import BaseLayout from './BaseLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Screenshot from '../components/Screenshot.astro';
+import { sectionByKey } from '../data/site';
+
+const fm = Astro.props.frontmatter ?? Astro.props;
+const { title, description, section, intro, draft, screenshots = [] } = fm;
+const sec = section ? sectionByKey(section) : undefined;
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
+---
+
+<BaseLayout title={title} description={description} section={section}>
+  <section class={`page-hero ${section ? `page-hero--${section}` : ''}`}>
+    <div class="container stack" style="--gap: 18px">
+      {
+        sec && sec.href !== path && (
+          <p class="breadcrumb">
+            <a href={sec.href}>{sec.title}</a>
+          </p>
+        )
+      }
+      <h1 class="h1" style="font-size: clamp(2.125rem, 4.2vw, 3.25rem)">{title}</h1>
+      {intro && <p class="lead muted">{intro}</p>}
+    </div>
+  </section>
+
+  <div class="container page-body">
+    {
+      sec && sec.pages.length > 0 && (
+        <aside class="page-body__nav">
+          <nav class="sub-nav" aria-label={sec.title}>
+            {sec.pages.map((p) => (
+              <a href={p.href} aria-current={p.href === path ? 'page' : undefined}>
+                {p.title}
+              </a>
+            ))}
+          </nav>
+        </aside>
+      )
+    }
+    <article class="page-body__content prose">
+      {draft && <p class="draft-note">Draft: this page's content is still being written.</p>}
+      {screenshots.map((sh: { file: string; alt: string; caption?: string }) => <Screenshot {...sh} />)}
+      <slot />
+    </article>
+  </div>
+
+  <CtaBand />
+</BaseLayout>

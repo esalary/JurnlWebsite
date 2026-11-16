@@ -1,0 +1,34 @@
+---
+import { product, sections } from '../data/site';
+const year = new Date().getFullYear();
+const features = sections.find((s) => s.key === 'features')!.pages.slice(1);
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__top">
+      <div class="stack" style="--gap: 16px; max-width: 320px">
+        <img src="/images/logo/jurnl-horizontal-reversed.svg" alt="Jurnl" width="104" height="42" style="height: 42px; width: auto; align-self: flex-start" />
+        <p>Payroll and accounting for Australian small businesses. Your books, on your computer, encrypted.</p>
+      </div>
+      <div class="site-footer__cols">
+        <div class="site-footer__col">
+          <strong>Features</strong>
+          {features.map((p) => <a href={p.href}>{p.title}</a>)}
+        </div>
+        <div class="site-footer__col">
+          <strong>Jurnl</strong>
+          <a href="/security/">Security</a>
+          <a href="/salary-packaging/">For salary packaging</a>
+          <a href="/faq/">FAQ</a>
+          <a href="/download/">Free trial</a>
+          <a href="/contact/">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© {year} {product.company} · ABN {product.abn} · Jurnl™</span>
+      <span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
+    </div>
+  </div>
+</footer>

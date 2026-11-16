@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Screenshot from '../components/Screenshot.astro';
+import { product } from '../data/site';
+
+const differentiators = [
+  {
+    title: 'Payroll and accounting are one system',
+    text: 'Approving a pay run posts the wages journal, PAYG, super and payments. Invoices, bills and bank lines post as you save them. Nothing to export, nothing to keep in sync.',
+  },
+  {
+    title: 'Your data stays yours, encrypted',
+    text: 'The database lives on your computer, encrypted, and syncs through a folder you already use, such as OneDrive. Tax file numbers, dates of birth and bank details are encrypted again.',
+  },
+  {
+    title: 'A sign-in for each person, with real roles',
+    text: 'Owner, Manager, Bookkeeper and Read-only. A bookkeeper can do the books without seeing tax file numbers or approving pay. Every change is in an audit trail.',
+  },
+  {
+    title: 'PAYG checked against the ATO',
+    text: `Withholding comes from the ATO's ${product.taxYear} schedules and is tested against all 720 amounts in the ATO's sample data, and its worked examples for final pays.`,
+  },
+  {
+    title: 'The bank statement does the reconciling',
+    text: "Import a CSV or Excel statement and Jurnl matches each line to a pay run, an invoice, a bill or a payment you recorded. Bank rules code the rest. You post when you're happy.",
+  },
+  {
+    title: 'A complete activity statement, with the working shown',
+    text: 'G1 to 1B, W1, W2 and PAYG instalments, on cash or accrual basis. The GST detail report lists every transaction behind every label.',
+  },
+  {
+    title: 'Final pays done properly',
+    text: 'Unused leave, payments in lieu of notice, severance and genuine redundancy, with the tax-free part and ETP caps worked out, and the right termination codes for STP.',
+  },
+  {
+    title: 'Built for package pay as well as wages',
+    text: 'Pay on a package rate with fees, insurance and salary sacrifice taken out before gross, and invoice the client for the same hours. Few small business products do this.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Is Jurnl cloud software?',
+    a: "No. It's a desktop app. Your database is on your computer and is synced through a shared folder you choose, such as OneDrive. Jurnl itself never holds your data.",
+  },
+  {
+    q: 'Can more than one person use it?',
+    a: 'Yes. Up to four people who edit and three read-only users, each with their own sign-in and role. One person edits at a time; Jurnl locks the shared copy while someone is working and tells others who has it.',
+  },
+  {
+    q: 'Can I do my BAS from it?',
+    a: 'Yes. The activity statement gives every label from your books on cash or accrual basis, and the GST detail report shows every transaction behind each label. You lodge it with the ATO as usual.',
+  },
+  {
+    q: 'Does it do Single Touch Payroll?',
+    a: 'Jurnl produces the Single Touch Lite file for each pay date and keeps the full STP Phase 2 breakdown. Lodging directly from Jurnl is planned.',
+  },
+];
+---
+
+<BaseLayout>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container split">
+      <div class="split__main stack" style="--gap: 24px; flex-basis: 480px">
+        <span class="eyebrow">For Australian small businesses</span>
+        <h1 class="h1">Payroll and books, together, on your terms.</h1>
+        <p class="lead" style="color: rgba(247,247,242,0.88)">
+          Jurnl is payroll and accounting for Australian small businesses, in one desktop app that keeps your books on your own computer, encrypted.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--mint" href="/download/">Download free trial</a>
+          <a class="btn btn--outline-light" href="/features/">See the features</a>
+        </div>
+        <div class="hero__facts">
+          <div class="fact"><span class="fact__value">{product.taxYear}</span><span class="fact__label">ATO tax tables</span></div>
+          <div class="fact"><span class="fact__value">One app</span><span class="fact__label">Pay runs to BAS</span></div>
+          <div class="fact"><span class="fact__value">Encrypted</span><span class="fact__label">On your computer</span></div>
+        </div>
+      </div>
+      <div class="split__side" style="flex-basis: 520px">
+        <Screenshot file="pay-run.png" alt="Pay run" caption="A weekly pay run for three people: gross, super, PAYG and take home worked out." />
+      </div>
+    </div>
+  </section>
+
+  <!-- Three areas -->
+  <section class="section">
+    <div class="container stack" style="--gap: 48px">
+      <div class="stack" style="--gap: 14px; max-width: 700px">
+        <span class="rule2" aria-hidden="true"></span>
+        <h2 class="h2">Everything a small business runs on, in one place</h2>
+        <p class="muted">Pay your staff, invoice your customers, pay your bills, reconcile the bank and prepare your BAS. The ledger and reports keep themselves up to date as you work.</p>
+      </div>
+      <div class="grid" style="--min: 280px; --gap: 36px">
+        <div class="area">
+          <h3>Payroll</h3>
+          <p class="muted">Weekly, fortnightly or monthly pay runs on wages or salary, with PAYG, super, leave and final pays worked out, and your STP, super and bank files ready.</p>
+          <a class="text-link" href="/features/payroll/">Payroll and leave →</a>
+        </div>
+        <div class="area">
+          <h3>Invoicing and bank</h3>
+          <p class="muted">Branded tax invoices and credit notes, supplier bills paid by bank file, and a bank statement import that matches what you've already recorded.</p>
+          <a class="text-link" href="/features/invoicing/">Invoicing →</a>
+        </div>
+        <div class="area">
+          <h3>BAS and reports</h3>
+          <p class="muted">A complete activity statement with the working shown, plus profit and loss, balance sheet, trial balance and a year-end pack for your accountant.</p>
+          <a class="text-link" href="/features/bas-and-reports/">BAS and reports →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Differentiators -->
+  <section class="section section--white">
+    <div class="container stack" style="--gap: 44px">
+      <div class="stack" style="--gap: 14px; max-width: 700px">
+        <span class="eyebrow">What makes Jurnl different</span>
+        <h2 class="h2">Built the way a small business actually works</h2>
+      </div>
+      <div class="grid" style="--min: 255px; --gap: 20px">
+        {
+          differentiators.map((d, i) => (
+            <article class="diff">
+              <span class="diff__num">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{d.title}</h3>
+              <p class="muted">{d.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Security strip -->
+  <section class="section section--ink">
+    <div class="container stack" style="--gap: 44px">
+      <div class="split" style="align-items: flex-end; gap: 24px">
+        <div class="split__main stack" style="--gap: 14px">
+          <span class="eyebrow">Security and privacy</span>
+          <h2 class="h2">Encrypted, signed in, and on the record</h2>
+        </div>
+        <div class="split__side">
+          <a class="btn btn--outline-light" href="/security/">How Jurnl protects your data</a>
+        </div>
+      </div>
+      <div class="sec-strip">
+        <div class="sec-item">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
+          <h3>Encrypted database</h3>
+          <p class="muted">The whole database is encrypted, and sensitive details are encrypted a second time.</p>
+        </div>
+        <div class="sec-item">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path></svg>
+          <h3>A sign-in for each person</h3>
+          <p class="muted">Each person has their own password and a role that limits what they can see and do.</p>
+        </div>
+        <div class="sec-item">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h10v16H5V8z"></path><path d="M9 4v4H5"></path><path d="M9 13h6M9 17h6"></path></svg>
+          <h3>Audit trail</h3>
+          <p class="muted">Every change is recorded: who, when, on which computer, old value to new.</p>
+        </div>
+        <div class="sec-item">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+          <h3>Your own folder</h3>
+          <p class="muted">Synced through a folder you already use. No vendor cloud holds your books.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ teaser -->
+  <section class="section">
+    <div class="container split" style="align-items: flex-start">
+      <div class="split__side stack" style="--gap: 14px; flex-basis: 300px">
+        <span class="rule2" aria-hidden="true"></span>
+        <h2 class="h2">Straight answers</h2>
+        <p class="muted">The questions people ask first.</p>
+        <a class="text-link" href="/faq/">All questions →</a>
+      </div>
+      <div class="split__main faq-list" style="flex-basis: 560px">
+        {
+          faqs.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

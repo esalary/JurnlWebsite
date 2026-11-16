@@ -1,0 +1,30 @@
+---
+// A screenshot in an app-window frame. Until the image file exists, a labelled placeholder shows instead.
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface Props {
+  file: string; // file name in public/images/screens/
+  alt: string;
+  caption?: string;
+}
+const { file, alt, caption } = Astro.props;
+const exists = fs.existsSync(path.join(process.cwd(), 'public/images/screens', file));
+---
+
+<figure class="shot">
+  <div class="shot__frame">
+    <div class="shot__bar" aria-hidden="true"><span></span><span></span><span></span></div>
+    {
+      exists ? (
+        <img src={`/images/screens/${file}`} alt={alt} loading="lazy" />
+      ) : (
+        <div class="shot__placeholder" role="img" aria-label={`${alt} (screenshot to come)`}>
+          <img src="/images/logo/jurnl-mark.svg" alt="" width="40" height="40" />
+          <span>Screenshot: {alt}</span>
+        </div>
+      )
+    }
+  </div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

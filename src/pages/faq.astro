@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const faqs = [
+  ['Is Jurnl cloud software?', "No. It's a desktop app. Your database is on your computer and is synced through a shared folder you choose, such as OneDrive. Jurnl itself never holds your data."],
+  ['Can more than one person use it?', 'Yes. Up to four people who edit and three read-only users, each with their own sign-in and role. One person edits at a time; Jurnl locks the shared copy while someone is working and tells others who has it.'],
+  ['Does it work offline?', "Yes. You work on a local copy; it's saved back to the shared folder when you're online again, and Jurnl warns you while you're offline."],
+  ['Is my data secure?', 'The whole database is encrypted, and tax file numbers, dates of birth, addresses and bank details are encrypted a second time. Each person signs in with their own password, and every change is recorded in an audit trail.'],
+  ['Does it do Single Touch Payroll?', 'Jurnl produces the Single Touch Lite file for each pay date and keeps the full STP Phase 2 breakdown. Lodging directly from Jurnl is planned.'],
+  ['Which pay rules does it follow?', "The ATO's 2026–27 withholding schedules (including working holiday makers, no TFN, foreign residents and study loans), the superannuation guarantee on ordinary time earnings, and the ATO's rules for unused leave and employment termination payments."],
+  ['Does it handle awards?', 'You set up the pay items you need (overtime rates, allowances, penalty-style loadings) and leave loading. Jurnl does not interpret modern awards for you.'],
+  ['Can I do my BAS from it?', 'Yes. The activity statement gives G1, G2, G3, G10, G11, 1A, 1B, W1, W2 and PAYG instalments on cash or accrual basis, and the GST detail report shows every transaction behind each label. You lodge it with the ATO as usual.'],
+  ['Which banks does it work with?', 'Any bank that exports statements as CSV or Excel and accepts ABA (direct entry) files for payments, which covers the major Australian banks.'],
+  ["I'm not registered for GST. Can I use it?", 'Yes. Turn GST off for the company and invoices, bills and the activity statement leave GST out.'],
+  ['Can I run more than one business?', 'Yes. Add as many companies as you like, each with its own folder, people and branding.'],
+  ['What does my accountant get?', 'An accountant pack: profit and loss, balance sheet, trial balance, general ledger, GST and PAYG by quarter and a payroll summary, as PDFs and one Excel workbook, with employees shown by payroll ID only.'],
+  ['What happens when Jurnl is updated?', "It backs up your database before applying any change, keeps that backup, and shows you what's new."],
+  ['Which computers does it run on?', 'Jurnl is a desktop app for Windows and Mac.'],
+  ['Is it for Australian businesses only?', "Yes. Its tax tables, Single Touch Payroll, activity statement, bank files and ABN, TFN and BSB checks are all Australian."],
+];
+---
+
+<BaseLayout title="FAQ" description="Straight answers about Jurnl: desktop, not cloud; security; Single Touch Payroll; BAS; banks; GST; several companies; updates." section="faq">
+  <section class="page-hero">
+    <div class="container stack" style="--gap: 18px">
+      <h1 class="h1" style="font-size: clamp(2.125rem, 4.2vw, 3.25rem)">Straight answers</h1>
+      <p class="lead muted">Questions people ask about Jurnl.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container" style="max-width: 900px">
+      <div class="faq-list">
+        {
+          faqs.map(([q, a]) => (
+            <details>
+              <summary>{q}</summary>
+              <p>{a}</p>
+            </details>
+          ))
+        }
+      </div>
+      <p class="muted" style="margin-top: 32px">Something else? <a href="/contact/">Ask us</a>.</p>
+    </div>
+  </section>
+  <CtaBand />
+</BaseLayout>
