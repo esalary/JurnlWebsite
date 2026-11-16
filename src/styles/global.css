@@ -1411,44 +1411,103 @@ p {
   align-items: flex-start;
 }
 
-/* stacked screenshots: cards behind peek out underneath the front one */
+/* stacked screenshots: cards behind peek out underneath the front one; click to cycle */
 .shot-stack {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
 }
 .shot-stack__deck {
   position: relative;
-  padding-bottom: calc(var(--behind) * 18px);
+  padding-bottom: 36px;
 }
-.shot-stack__front {
-  position: relative;
-  z-index: 3;
+/* reserves the height of one card: 32px title bar + a 16:10 screenshot */
+.shot-stack__deck::before {
+  content: '';
+  display: block;
+  padding-top: calc(62.5% + 32px);
 }
-.shot-stack__back {
+.shot-stack__card {
   position: absolute;
   inset: 0 0 auto 0;
-  z-index: calc(3 - var(--i));
   transform-origin: 50% 100%;
-  transform: translateY(calc(var(--i) * 18px)) scale(calc(1 - var(--i) * 0.06));
-  opacity: calc(1 - var(--i) * 0.12);
+  transition: transform 0.45s ease, opacity 0.45s ease;
 }
-.shot-stack__back .shot__frame {
+.shot-stack__card[data-pos='0'] {
+  z-index: 4;
+}
+.shot-stack__card[data-pos='1'] {
+  z-index: 3;
+  transform: translateY(18px) scale(0.94);
+  opacity: 0.88;
+}
+.shot-stack__card[data-pos='2'] {
+  z-index: 2;
+  transform: translateY(36px) scale(0.88);
+  opacity: 0.76;
+}
+.shot-stack__card[data-pos='3'] {
+  z-index: 1;
+  transform: translateY(36px) scale(0.88);
+  opacity: 0;
+}
+.shot-stack__card:not([data-pos='0']) .shot__frame {
   box-shadow: 0 12px 30px rgba(20, 27, 49, 0.25);
 }
-/* keep every card in the deck the same shape */
+.shot-stack.is-interactive .shot-stack__deck {
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .shot-stack__card {
+    transition: none;
+  }
+}
+/* every card in the deck the same shape */
 .shot-stack .shot__frame picture,
-.shot-stack .shot__frame img {
+.shot-stack .shot__frame img,
+.shot-stack .shot__placeholder {
   display: block;
   aspect-ratio: 16 / 10;
   width: 100%;
   object-fit: cover;
   object-position: top left;
 }
-.shot-stack figcaption {
-  font-size: 0.875rem;
+.shot-stack__bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
-.hero .shot-stack figcaption {
-  color: rgba(247, 247, 242, 0.75);
+.shot-stack__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.shot-stack__caption {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  min-height: 2.9em;
+}
+.shot-stack__count {
+  font-size: 0.8125rem;
+  opacity: 0.75;
+}
+.shot-stack__btn {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.shot-stack__btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.7);
 }
