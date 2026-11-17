@@ -21,4 +21,6 @@ Jurnl makes your Single Touch Payroll file from each pay date and keeps a full S
 
 ## Lodging
 
-You lodge the Single Touch Lite file through your usual channel. Lodging directly from Jurnl is planned and waiting on ATO software registration.
+For now, you lodge the Single Touch Lite file through your usual channel.
+
+**Direct lodging is in development.** Lodging STP straight from Jurnl to the ATO, including the full Phase 2 breakdown, is being built.

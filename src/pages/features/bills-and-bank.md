@@ -24,4 +24,8 @@ Bring in your bank statement as CSV or Excel, and Jurnl matches each line to wha
 - **The running balance** is checked against the statement, and you can lock the books through a quarter once everything agrees.
 - **Search** by description, exact amount, whole dollars or a range.
 
-Jurnl works with any bank that exports statements as CSV or Excel and accepts ABA (direct entry) files for payments, which covers the major Australian banks. Statements are imported as files; there are no direct bank feeds.
+Jurnl works with any bank that exports statements as CSV or Excel and accepts ABA (direct entry) files for payments, which covers the major Australian banks. For now, statements are imported as files.
+
+## Bank feeds: in development
+
+Direct bank feeds are being built, so your transactions come into Jurnl without downloading and importing a statement. Matching, bank rules and posting will work the same way.

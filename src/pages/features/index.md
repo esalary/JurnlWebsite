@@ -43,3 +43,8 @@ An encrypted database on your own computer, a sign-in for each person, and an au
 - Lock the books once a quarter is reconciled, so nothing in it can change.
 - An accountant pack in one zip: reports, general ledger, GST and PAYG by quarter and a payroll summary, with employees shown only by payroll ID.
 - Upgrades back up your database first, every time.
+
+## On the way
+
+- **Bank feeds:** transactions straight from your bank, without downloading and importing a statement.
+- **STP lodging from Jurnl:** send Single Touch Payroll, including the full Phase 2 breakdown, straight to the ATO.
