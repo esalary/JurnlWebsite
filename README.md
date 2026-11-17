@@ -45,6 +45,6 @@ Pages show a labelled placeholder until the image is added to `public/images/scr
 
 - [ ] Screenshots
 - [ ] Trial and contact forms (Azure Functions at `/api/trial` and `/api/contact`)
-- [ ] Jurnl support email (`src/data/site.ts`)
+- [x] Jurnl support email: support@jurnl.com.au
 - [ ] Pricing
 - [ ] Hosting on Azure Static Web Apps and the jurnl.com.au domain
