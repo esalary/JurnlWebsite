@@ -28,7 +28,7 @@ We keep enquiries and trial requests in our Microsoft 365 mailbox, which general
 
 ## Access, correction and complaints
 
-Email [privacy@esalary.com.au](mailto:privacy@esalary.com.au) to see or correct the personal information we hold about you, or to make a complaint. We'll respond within 30 days. If you're not satisfied, you can contact the Office of the Australian Information Commissioner at [oaic.gov.au](https://www.oaic.gov.au).
+Email [privacy@jurnl.com.au](mailto:privacy@jurnl.com.au) to see or correct the personal information we hold about you, or to make a complaint. We'll respond within 30 days. If you're not satisfied, you can contact the Office of the Australian Information Commissioner at [oaic.gov.au](https://www.oaic.gov.au).
 
 ## Changes
 

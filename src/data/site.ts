@@ -9,7 +9,8 @@ export const product = {
   platforms: 'Windows and Mac',
   company: 'ESalary Pty Ltd',
   abn: '71 119 121 023',
-  email: 'support@jurnl.com.au',
+  email: 'support@jurnl.com.au', // aliases on the same shared mailbox: hello@, privacy@
+  privacyEmail: 'privacy@jurnl.com.au',
   location: 'Canberra, ACT',
 };
 
