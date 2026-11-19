@@ -31,6 +31,10 @@ Every activity statement label from your books, with the transactions behind eac
 
 One app for every business you run, documents in your own branding, and imports that bring your people, customers and suppliers with you.
 
+## [Read-only copies](/features/read-only-copies/)
+
+Let your accountant or lender see the books without sharing your folder: one encrypted file they open in Jurnl with their own password, free.
+
 ## [Security](/security/)
 
 An encrypted database on your own computer, a sign-in for each person, and an audit trail of every change.
@@ -42,7 +46,8 @@ An encrypted database on your own computer, a sign-in for each person, and an au
 - Email invoices and pay slips through Microsoft 365 or any SMTP mail server, as drafts to check or sent straight away.
 - Lock the books once a quarter is reconciled, so nothing in it can change.
 - An accountant pack in one zip: reports, general ledger, GST and PAYG by quarter and a payroll summary, with employees shown only by payroll ID.
-- Upgrades back up your database first, every time.
+- Signed installers for Windows and Mac, with automatic updates that back up your database first, every time.
+- Works for one person on one computer, with no cloud drive needed.
 
 ## On the way
 

@@ -4,7 +4,10 @@ import CtaBand from '../components/CtaBand.astro';
 
 const faqs = [
   ['Is Jurnl cloud software?', "No. It's a desktop app. Your database is on your computer and is synced through a shared folder you choose, such as OneDrive. Jurnl itself never holds your data."],
+  ['Do I need OneDrive or another cloud drive?', "No, not if you're the only person using it. Keep the company in a folder on your own computer; Jurnl encrypts it and makes backups. A cloud drive is only needed when other people work on the same company, and then everyone uses the same one. Jurnl also copies your backups to a second place, such as a USB drive, so a broken computer doesn't take your books with it."],
   ['Can more than one person use it?', 'Yes. Up to four people who edit and three read-only users, each with their own sign-in and role. One person edits at a time; Jurnl locks the shared copy while someone is working and tells others who has it.'],
+  ['Can I share the books with someone who uses a different cloud drive?', "Not for working on them together. Everyone who works on a company must sync the same shared folder from the same provider, for example all on OneDrive or all on Dropbox. With OneDrive, outside people such as your accountant need a Microsoft 365 work account, either their own organisation's or one you add for them. For anyone else, make a read-only copy."],
+  ['Can my accountant or lender look at my books without syncing my folder?', "Yes. Make a read-only copy for them: one encrypted file they open in Jurnl with their own password, free and with no cloud account. You choose whether it includes payroll and employee names, and personal and bank details are always left out. If they don't use Jurnl, email them the accountant pack (PDFs and an Excel workbook) instead."],
   ['Does it work offline?', "Yes. You work on a local copy; it's saved back to the shared folder when you're online again, and Jurnl warns you while you're offline."],
   ['Is my data secure?', 'The whole database is encrypted, and tax file numbers, dates of birth, addresses and bank details are encrypted a second time. Each person signs in with their own password, and every change is recorded in an audit trail.'],
   ['Does it do Single Touch Payroll?', 'Yes. Jurnl produces the Single Touch Lite file for each pay date and keeps the full STP Phase 2 breakdown. Lodging STP directly from Jurnl is in development.'],
@@ -15,13 +18,14 @@ const faqs = [
   ["I'm not registered for GST. Can I use it?", 'Yes. Turn GST off for the company and invoices, bills and the activity statement leave GST out.'],
   ['Can I run more than one business?', 'Yes. Add as many companies as you like, each with its own folder, people and branding.'],
   ['What does my accountant get?', 'An accountant pack: profit and loss, balance sheet, trial balance, general ledger, GST and PAYG by quarter and a payroll summary, as PDFs and one Excel workbook, with employees shown by payroll ID only.'],
-  ['What happens when Jurnl is updated?', "It backs up your database before applying any change, keeps that backup, and shows you what's new."],
+  ['Is there a free trial?', 'Yes. Jurnl launches as a Trial edition. You can download it and start without a key (one company, a few employees); a free trial key raises the limits. During the trial, Single Touch Payroll is reported with the Single Touch Lite file; lodging directly from Jurnl comes once the ATO approves it. Opening a read-only copy never needs a licence.'],
+  ['What happens when Jurnl is updated?', "Jurnl updates itself on Windows and Mac. Before a new version changes anything, it backs up your database and keeps that backup, then shows you what's new. Updates work during the trial too."],
   ['Which computers does it run on?', 'Jurnl is a desktop app for Windows and Mac.'],
   ['Is it for Australian businesses only?', "Yes. Its tax tables, Single Touch Payroll, activity statement, bank files and ABN, TFN and BSB checks are all Australian."],
 ];
 ---
 
-<BaseLayout title="FAQ" description="Straight answers about Jurnl: desktop, not cloud; security; Single Touch Payroll; BAS; banks; GST; several companies; updates." section="faq">
+<BaseLayout title="FAQ" description="Straight answers about Jurnl: desktop, not cloud; working alone or with others; read-only copies; security; Single Touch Payroll; BAS; banks; GST; the free trial; updates." section="faq">
   <section class="page-hero">
     <div class="container stack" style="--gap: 18px">
       <h1 class="h1" style="font-size: clamp(2.125rem, 4.2vw, 3.25rem)">Straight answers</h1>

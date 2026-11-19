@@ -30,6 +30,7 @@ export const sections: Section[] = [
       { title: 'Bills and bank', href: '/features/bills-and-bank/' },
       { title: 'BAS and reports', href: '/features/bas-and-reports/' },
       { title: 'Companies and moving in', href: '/features/companies/' },
+      { title: 'Read-only copies', href: '/features/read-only-copies/' },
     ],
   },
   { key: 'security', title: 'Security', href: '/security/', pages: [] },

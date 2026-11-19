@@ -8,6 +8,7 @@ const MAILBOX = 'support@jurnl.com.au';
 
 const STAFF = ['Just me', '2 to 5', '6 to 20', 'More than 20'];
 const PLATFORMS = ['Windows', 'Mac'];
+const KEY = ["Not yet: I'll start without a key", 'Yes, please send me a trial key'];
 
 // When TRIAL_DOWNLOAD_URL is set (Static Web App → Environment variables), the person is
 // emailed the link straight away. Until then, support@ gets the request and sends it by hand.
@@ -39,9 +40,11 @@ const trial = formHandler({
     business: { label: 'Business name', max: 150 },
     staff: { label: 'How many people do you pay', max: 20, options: STAFF },
     platform: { label: 'Computer', max: 10, options: PLATFORMS },
+    key: { label: 'Free trial key', max: 40, options: KEY },
   },
   async send(f, context) {
     const url = downloadUrl();
+    const wantsKey = f.key === KEY[1];
     let sent = '';
     if (url) {
       try {
@@ -61,15 +64,18 @@ const trial = formHandler({
       from: MAILBOX,
       to: MAILBOX,
       replyTo: { address: f.email, name: f.name },
-      subject: `Jurnl trial request: ${f.name}${f.business ? ` (${f.business})` : ''}`,
+      subject: `Jurnl trial request${wantsKey ? ' + trial key' : ''}: ${f.name}${f.business ? ` (${f.business})` : ''}`,
       html: emailHtml(
-        sent || 'New trial request. Reply to this email with the download link.',
+        [sent || 'New trial request. Reply to this email with the download link.', wantsKey ? 'They would like a free trial key.' : '']
+          .filter(Boolean)
+          .join(' '),
         [
           ['Name', f.name],
           ['Email', f.email],
           ['Business', f.business],
           ['People paid', f.staff],
           ['Computer', f.platform],
+          ['Trial key', wantsKey ? 'Yes, send a trial key' : 'Not yet'],
         ],
       ),
     });

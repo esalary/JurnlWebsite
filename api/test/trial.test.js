@@ -75,6 +75,17 @@ test('a non-https download URL is ignored', async () => {
   assert.equal(sends.length, 1);
 });
 
+test('asking for a trial key shows in the subject and the email', async () => {
+  delete process.env.TRIAL_DOWNLOAD_URL;
+  const sends = mockGraph();
+  await trial(request({ ...good, key: 'Yes, please send me a trial key' }), context);
+  assert.equal(sends[0].subject, 'Jurnl trial request + trial key: Sam Lee (Lee Plumbing)');
+  assert.match(sends[0].body.content, /would like a free trial key/);
+  const plain = mockGraph();
+  await trial(request(good), context);
+  assert.match(plain[0].body.content, /Not yet/);
+});
+
 test('honeypot submissions send nothing', async () => {
   const sends = mockGraph();
   const res = await trial(request({ ...good, company_website: 'x' }), context);
