@@ -7,8 +7,7 @@ intro: "Try Jurnl with your own business, free, on Windows or Mac."
 
 Fill in the short form and we'll email you the download link.
 
-<!-- TODO: /api/trial is an Azure Function to be added; it will email the download link. -->
-<form class="form" method="post" action="/api/trial">
+<form class="form" method="post" action="/api/trial" data-form data-thanks="/download/thanks/">
   <div class="field">
     <label for="t-name">Name</label>
     <input id="t-name" name="name" type="text" autocomplete="name" required />
@@ -37,8 +36,13 @@ Fill in the short form and we'll email you the download link.
       <option>Mac</option>
     </select>
   </div>
+  <div class="hp" aria-hidden="true">
+    <label for="company_website">Leave this empty</label>
+    <input id="company_website" name="company_website" type="text" tabindex="-1" autocomplete="off" />
+  </div>
   <p class="muted" style="font-size: 0.875rem">We use your details only to send the trial and follow up about Jurnl. See our <a href="/privacy/">privacy policy</a>.</p>
   <button class="btn btn--primary" type="submit" style="justify-self: start">Send me the download link</button>
+  <p class="form-status" role="status" aria-live="polite"></p>
 </form>
 
 ## What you'll need

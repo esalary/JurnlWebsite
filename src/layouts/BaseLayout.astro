@@ -8,12 +8,14 @@ interface Props {
   title?: string;
   description?: string;
   section?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
   description = 'Jurnl is payroll and accounting for Australian small businesses, in one desktop app that keeps your books on your own computer, encrypted.',
   section,
+  noindex = false,
 } = Astro.props;
 
 const fullTitle = title ? `${title} | ${product.name}` : `${product.name} | Payroll and accounting for Australian small businesses`;
@@ -28,6 +30,7 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : un
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={canonical} />}
+    {noindex && <meta name="robots" content="noindex" />}
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -53,5 +56,42 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : un
       <slot />
     </main>
     <Footer />
+    <script>
+      // Forms marked data-form post to /api/... and go to their thank-you page.
+      // Without JavaScript they still post normally and the function redirects.
+      document.querySelectorAll<HTMLFormElement>('form[data-form]').forEach((form) => {
+        const opened = Date.now();
+        const status = form.querySelector<HTMLElement>('.form-status');
+        const button = form.querySelector<HTMLButtonElement>('[type="submit"]');
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          const data = new FormData(form);
+          data.set('elapsed', String(Date.now() - opened));
+          const show = (text: string, state = '') => {
+            if (!status) return;
+            status.textContent = text;
+            status.dataset.state = state;
+          };
+          if (button) button.disabled = true;
+          show('Sending…');
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              body: new URLSearchParams(data as unknown as Record<string, string>),
+              headers: { Accept: 'application/json' },
+            });
+            const body = await res.json().catch(() => ({}));
+            if (res.ok && body.ok) {
+              window.location.href = form.dataset.thanks || '/';
+              return;
+            }
+            show(body.message || 'Sorry, something went wrong. Please try again.', 'error');
+          } catch {
+            show('Sorry, your message could not be sent. Please check your connection and try again.', 'error');
+          }
+          if (button) button.disabled = false;
+        });
+      });
+    </script>
   </body>
 </html>

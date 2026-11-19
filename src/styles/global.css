@@ -779,6 +779,34 @@ p {
   resize: vertical;
 }
 
+/* Spam trap: off screen for people, filled in by bots */
+.hp {
+  position: absolute !important;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-status {
+  margin: 0;
+  font-weight: 500;
+}
+
+.form-status:empty {
+  display: none;
+}
+
+.form-status[data-state='error'] {
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+
 /* ---------- contact band + footer ---------- */
 
 .contact-band {

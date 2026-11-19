@@ -28,8 +28,7 @@ import { product } from '../data/site';
     </aside>
 
     <div class="page-body__content">
-      <!-- TODO: /api/contact is an Azure Function to be added with the trial form. -->
-      <form class="form" method="post" action="/api/contact">
+      <form class="form" method="post" action="/api/contact" data-form data-thanks="/contact/thanks/">
         <div class="field">
           <label for="name">Name</label>
           <input id="name" name="name" type="text" autocomplete="name" required />
@@ -51,8 +50,13 @@ import { product } from '../data/site';
           <label for="message">Message</label>
           <textarea id="message" name="message" required></textarea>
         </div>
+        <div class="hp" aria-hidden="true">
+          <label for="company_website">Leave this empty</label>
+          <input id="company_website" name="company_website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
         <p class="muted" style="font-size: 0.875rem">We use your details only to respond to your enquiry. See our <a href="/privacy/">privacy policy</a>.</p>
         <button class="btn btn--primary" type="submit" style="justify-self: start">Send message</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>

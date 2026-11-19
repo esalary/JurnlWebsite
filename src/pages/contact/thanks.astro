@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Message sent" description="Thank you for contacting Jurnl." noindex>
+  <section class="page-hero">
+    <div class="container stack" style="--gap: 18px">
+      <h1 class="h1" style="font-size: clamp(2.125rem, 4.2vw, 3.25rem)">Thank you</h1>
+      <p class="lead muted">Your message has been sent. We'll get back to you soon.</p>
+    </div>
+  </section>
+  <div class="container page-body">
+    <div class="page-body__content stack" style="--gap: 16px">
+      <p>In the meantime, the <a href="/faq/">questions and answers</a> may help.</p>
+      <p><a class="btn btn--primary" href="/">Back to the home page</a></p>
+    </div>
+  </div>
+</BaseLayout>
