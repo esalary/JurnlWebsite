@@ -1,7 +1,7 @@
 ---
 // App screenshots fanned like a deck from the bottom left to the top right: one in front, the next two
-// behind it, each a step up and to the right. Click the front screenshot or the arrows to bring
-// the next one forward; it cycles through all of them.
+// behind it, each a step up and to the right. The arrows bring the next one forward (it cycles);
+// clicking the front screenshot opens it full size, where all of them can be stepped through.
 import Screenshot from './Screenshot.astro';
 
 interface Shot {
@@ -14,6 +14,7 @@ interface Props {
   note?: string; // shown under the captions, e.g. "Made-up business"
 }
 const { shots, note } = Astro.props;
+const group = `stack-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
 <figure class="shot-stack" data-shot-stack>
@@ -22,7 +23,7 @@ const { shots, note } = Astro.props;
       {
         shots.map((s, i) => (
           <div class="shot-stack__card" data-card data-pos={Math.min(i, 3)} aria-hidden={i === 0 ? undefined : 'true'}>
-            <Screenshot file={s.file} alt={s.alt} eager={i === 0} />
+            <Screenshot file={s.file} alt={s.alt} eager={i === 0} zoomGroup={group} zoomCaption={s.caption} />
           </div>
         ))
       }
@@ -63,6 +64,7 @@ const { shots, note } = Astro.props;
         card.dataset.pos = String(Math.min(pos, 3));
         if (pos === 0) card.removeAttribute('aria-hidden');
         else card.setAttribute('aria-hidden', 'true');
+        card.querySelector('.shot__zoom')?.setAttribute('tabindex', pos === 0 ? '0' : '-1');
       });
       if (captionEl) captionEl.textContent = captions[front] ?? '';
       if (countEl) countEl.textContent = String(front + 1);
@@ -70,9 +72,13 @@ const { shots, note } = Astro.props;
 
     stack.querySelector('[data-next]')?.addEventListener('click', () => show(front + 1));
     stack.querySelector('[data-prev]')?.addEventListener('click', () => show(front - 1));
+    // A click on the edge of a card behind opens the front one
     stack.querySelector('.shot-stack__area')?.addEventListener('click', (e) => {
-      if (!(e.target as Element).closest('button')) show(front + 1);
+      if (!(e.target as Element).closest('button')) cards[front].querySelector<HTMLElement>('.shot__zoom')?.click();
     });
+    // Stepping through in the full-size viewer brings that screenshot to the front here too
+    stack.addEventListener('lightbox:show', (e) => show((e as CustomEvent).detail.index));
+    show(0);
     stack.classList.add('is-interactive');
   }
 </script>

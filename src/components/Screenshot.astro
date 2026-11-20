@@ -1,6 +1,8 @@
 ---
 // A screenshot in an app-window frame, or a PDF shown as a page (kind="doc").
 // Until the image file exists, a labelled placeholder shows instead.
+// Clicking it opens the full-size viewer (Lightbox.astro) with images/screens/large/<name>.webp
+// when that exists; screenshots with the same zoomGroup can be stepped through there.
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -11,19 +13,46 @@ interface Props {
   kind?: 'app' | 'doc';
   class?: string;
   eager?: boolean;
+  zoom?: boolean; // open the full-size viewer on click (default true)
+  zoomGroup?: string;
+  zoomCaption?: string; // caption in the viewer (defaults to caption, then alt)
 }
-const { file, alt, caption, kind = 'app', class: extra = '', eager = false } = Astro.props;
+const { file, alt, caption, kind = 'app', class: extra = '', eager = false, zoom = true, zoomGroup, zoomCaption } = Astro.props;
 const dir = path.join(process.cwd(), 'public/images/screens');
 const exists = fs.existsSync(path.join(dir, file));
 const webp = file.replace(/\.png$/, '.webp');
 const hasWebp = webp !== file && fs.existsSync(path.join(dir, webp));
+const largeName = `large/${file.replace(/\.png$/, '.webp')}`;
+const large = fs.existsSync(path.join(dir, largeName)) ? `/images/screens/${largeName}` : `/images/screens/${file}`;
+const small = `/images/screens/${hasWebp ? webp : file}`;
+const zoomable = exists && zoom;
 ---
 
 <figure class={`shot shot--${kind} ${extra}`}>
   <div class="shot__frame">
     {kind === 'app' && <div class="shot__bar" aria-hidden="true"><span></span><span></span><span></span></div>}
     {
-      exists ? (
+      zoomable ? (
+        <button
+          type="button"
+          class="shot__zoom"
+          data-zoom={large}
+          data-zoom-small={small}
+          data-zoom-alt={alt}
+          data-zoom-caption={zoomCaption ?? caption ?? alt}
+          data-zoom-group={zoomGroup}
+          aria-label={`Enlarge screenshot: ${alt}`}
+        >
+          <picture>
+            {hasWebp && <source srcset={`/images/screens/${webp}`} type="image/webp" />}
+            <img src={`/images/screens/${file}`} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+          </picture>
+          <span class="shot__hint" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg>
+            Enlarge
+          </span>
+        </button>
+      ) : exists ? (
         <picture>
           {hasWebp && <source srcset={`/images/screens/${webp}`} type="image/webp" />}
           <img src={`/images/screens/${file}`} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />

@@ -43,7 +43,7 @@ const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.p
     }
     <article class="page-body__content prose">
       {draft && <p class="draft-note">Draft: this page's content is still being written.</p>}
-      {screenshots.map((sh: { file: string; alt: string; caption?: string; kind?: 'app' | 'doc' }) => <Screenshot {...sh} />)}
+      {screenshots.map((sh: { file: string; alt: string; caption?: string; kind?: 'app' | 'doc' }) => <Screenshot {...sh} zoomGroup="page" />)}
       <slot />
     </article>
   </div>

@@ -1439,7 +1439,7 @@ button[disabled] {
   align-items: flex-start;
 }
 
-/* stacked screenshots: fanned from the bottom left to the top right; click or arrows to cycle */
+/* stacked screenshots: fanned from the bottom left to the top right; arrows cycle, click enlarges */
 .shot-stack {
   --step: 22px; /* how far each card behind sits up and to the right */
   margin: 0;
@@ -1487,7 +1487,13 @@ button[disabled] {
   box-shadow: 0 10px 24px rgba(10, 15, 30, 0.3);
 }
 .shot-stack.is-interactive .shot-stack__area {
-  cursor: pointer;
+  cursor: zoom-in;
+}
+.shot-stack__card:not([data-pos='0']) .shot__zoom {
+  pointer-events: none;
+}
+.shot-stack__card:not([data-pos='0']) .shot__hint {
+  display: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .shot-stack__card {
