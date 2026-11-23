@@ -3,8 +3,8 @@
 
 export const product = {
   name: 'Jurnl',
-  version: '2.4.0',
-  released: '16 November 2026',
+  version: '2.6.3',
+  released: '23 November 2026',
   taxYear: '2026–27',
   platforms: 'Windows and Mac',
   company: 'ESalary Pty Ltd',
@@ -12,6 +12,20 @@ export const product = {
   email: 'support@jurnl.com.au', // aliases on the same shared mailbox: hello@, privacy@
   privacyEmail: 'privacy@jurnl.com.au',
   location: 'Canberra, ACT',
+};
+
+// Installers for the current release. Beta releases are GitHub pre-releases, so the links name the
+// tag (GitHub's latest/download links only follow stable releases). Each release: change version and tag.
+const releases = 'https://github.com/esalary/jurnl-releases/releases/download';
+export const download = {
+  version: '2.6.3',
+  channel: 'beta',
+  tag: 'v2.6.3',
+  windows: { label: 'Windows', file: 'JurnlApp-win-x64-beta-Setup.exe', size: '58 MB', needs: 'Windows 10 or 11, 64-bit' },
+  mac: { label: 'Mac', file: 'JurnlApp-osx-arm64-beta-Setup.pkg', size: '46 MB', needs: 'Apple silicon (M1 or later)' },
+  url(file: string) {
+    return `${releases}/${this.tag}/${file}`;
+  },
 };
 
 export type Page = { title: string; href: string };
