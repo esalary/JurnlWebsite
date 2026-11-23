@@ -265,6 +265,38 @@ p {
   gap: 14px;
 }
 
+.hero__trial {
+  margin: -8px 0 0;
+  font-size: 0.9375rem;
+  color: rgba(247, 247, 242, 0.85);
+}
+.hero__trial a {
+  color: var(--mint);
+  font-weight: 600;
+}
+.downloads {
+  display: grid;
+  gap: 12px;
+}
+.downloads__btn {
+  gap: 9px;
+}
+.downloads__notes {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.downloads--dark .downloads__notes {
+  color: rgba(247, 247, 242, 0.75);
+}
+.downloads__notes a {
+  font-weight: 600;
+}
+.downloads--dark .downloads__notes a {
+  color: var(--mint);
+}
+
 .text-link {
   font-weight: 600;
   text-decoration: none;

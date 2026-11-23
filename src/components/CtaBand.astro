@@ -1,4 +1,5 @@
 ---
+import DownloadButtons from './DownloadButtons.astro';
 ---
 
 <section class="cta-band">
@@ -6,11 +7,11 @@
     <div class="split__main stack" style="--gap: 16px">
       <span class="rule2" aria-hidden="true"></span>
       <h2 class="h2">Try Jurnl with your own business</h2>
-      <p class="lead muted">Download the free trial for Windows or Mac and run a pay, an invoice and a bank reconciliation on your own data.</p>
+      <p class="lead muted">Download Jurnl for Windows or Mac and run a pay, an invoice and a bank reconciliation on your own data. Free with one company and up to three employees; <a href="/download/#licence" style="color: var(--mint)">a free trial licence</a> lifts the limits.</p>
     </div>
-    <div class="split__side btn-row" style="justify-content: flex-start">
-      <a class="btn btn--mint" href="/download/">Download free trial</a>
-      <a class="btn btn--outline-light" href="/contact/">Ask a question</a>
+    <div class="split__side stack" style="--gap: 14px">
+      <DownloadButtons tone="dark" />
+      <p style="margin: 0"><a class="text-link" href="/contact/" style="color: var(--paper)">Ask a question</a></p>
     </div>
   </div>
 </section>

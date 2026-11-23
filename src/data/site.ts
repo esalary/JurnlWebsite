@@ -28,6 +28,17 @@ export const download = {
   },
 };
 
+// User manual: replace public/downloads/Jurnl-User-Manual.pdf with each release (same file name).
+export const manual = {
+  href: '/downloads/Jurnl-User-Manual.pdf',
+  version: '2.6.3',
+  size: '450 KB',
+  pages: 16,
+};
+
+// Without a licence (from the manual's "Your licence").
+export const unlicensed = { companies: 1, employees: 3, text: 'one company and up to three employees' };
+
 export type Page = { title: string; href: string };
 export type Section = { key: string; title: string; href: string; pages: Page[] };
 

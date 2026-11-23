@@ -46,7 +46,7 @@ An encrypted database on your own computer, a sign-in for each person, and an au
 - Email invoices and pay slips through Microsoft 365 or any SMTP mail server, as drafts to check or sent straight away.
 - Lock the books once a quarter is reconciled, so nothing in it can change.
 - An accountant pack in one zip: reports, general ledger, GST and PAYG by quarter and a payroll summary, with employees shown only by payroll ID.
-- Signed installers for Windows and Mac, with automatic updates that back up your database first, every time.
+- Installers for Windows and Mac, with automatic updates that back up your database first, every time.
 - Works for one person on one computer, with no cloud drive needed.
 
 ## On the way

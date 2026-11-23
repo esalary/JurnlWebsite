@@ -1,0 +1,39 @@
+---
+// The two installer buttons with what each needs, the beta note and the user manual.
+// tone="dark" on ink backgrounds (hero, CTA band), "light" on paper.
+import { download, manual } from '../data/site';
+
+interface Props {
+  tone?: 'dark' | 'light';
+  showNotes?: boolean;
+}
+const { tone = 'light', showNotes = true } = Astro.props;
+const installers = [download.windows, download.mac];
+const buttonClass = tone === 'dark' ? 'btn btn--mint' : 'btn btn--primary';
+---
+
+<div class={`downloads downloads--${tone}`}>
+  <div class="btn-row">
+    {
+      installers.map((i) => (
+        <a class={`${buttonClass} downloads__btn`} href={download.url(i.file)} download data-platform={i.label}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 4v11M7 10l5 5 5-5M5 20h14" />
+          </svg>
+          Download for {i.label}
+        </a>
+      ))
+    }
+  </div>
+  {
+    showNotes && (
+      <p class="downloads__notes">
+        Version {download.version}{download.channel === 'beta' && ' (beta)'} · Windows 10 or 11, 64-bit · Mac with Apple silicon (M1 or later)
+        <br />
+        <a href={manual.href} target="_blank" rel="noopener">
+          User manual (PDF, {manual.pages} pages)
+        </a>
+      </p>
+    )
+  }
+</div>

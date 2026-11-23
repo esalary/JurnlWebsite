@@ -1,41 +1,28 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { product, download } from '../../data/site';
-const installers = [download.windows, download.mac];
+import DownloadButtons from '../../components/DownloadButtons.astro';
+import { product } from '../../data/site';
 ---
 
-<BaseLayout title="Thanks for trying Jurnl" description="Your Jurnl free trial." noindex>
+<BaseLayout title="Trial licence requested" description="Your Jurnl trial licence." noindex>
   <section class="page-hero">
     <div class="container stack" style="--gap: 18px">
       <h1 class="h1" style="font-size: clamp(2.125rem, 4.2vw, 3.25rem)">Thanks for trying Jurnl</h1>
-      <p class="lead muted">Download Jurnl {download.version} now. We'll also email you the link.</p>
+      <p class="lead muted">We'll email you a free trial licence shortly.</p>
     </div>
   </section>
   <div class="container page-body">
     <div class="page-body__content stack" style="--gap: 16px">
-      <div class="btn-row">
-        {installers.map((i) => (
-          <a class="btn btn--primary" href={download.url(i.file)} download>
-            Download for {i.label}
-          </a>
-        ))}
-      </div>
-      <ul class="muted" style="font-size: 0.9375rem">
-        {installers.map((i) => (
-          <li><strong>{i.label}:</strong> {i.needs}, {i.size}.</li>
-        ))}
-      </ul>
-      {download.channel === 'beta' && (
-        <p class="muted" style="font-size: 0.9375rem">
-          This is a beta release. It updates itself as new betas come out. If your browser holds the
-          download back as unverified, choose <strong>Keep</strong>.
-        </p>
-      )}
+      <p>
+        The licence is a file ending in <strong>.licence</strong>, or a line of text starting <strong>JURNL-LICENCE-1</strong>. Enter it with
+        <strong>Licence…</strong> on Jurnl's first screen, or in Settings → Licence and updates.
+      </p>
+      <p>If you haven't installed Jurnl yet, you can start now: it works with one company and three employees until the licence arrives.</p>
+      <DownloadButtons />
       <p>
         If the email hasn't arrived within a business day, check your junk or spam folder, or email
         <a href={`mailto:${product.email}`}>{product.email}</a>.
       </p>
-      <p>While you wait, see <a href="/features/">what Jurnl does</a> or read about <a href="/security/">how your data is kept safe</a>.</p>
     </div>
   </div>
 </BaseLayout>
