@@ -2,8 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ScreenshotStack from '../components/ScreenshotStack.astro';
-import DownloadButtons from '../components/DownloadButtons.astro';
-import { product, unlicensed } from '../data/site';
+import { product } from '../data/site';
 
 const differentiators = [
   {
@@ -74,11 +73,10 @@ const faqs = [
         <p class="lead" style="color: rgba(247,247,242,0.88)">
           Jurnl is payroll and accounting for Australian small businesses, in one desktop app that keeps your books on your own computer, encrypted.
         </p>
-        <DownloadButtons tone="dark" />
-        <p class="hero__trial">
-          Free to use with {unlicensed.text}.
-          Need more? <a href="/download/#licence">Get a free trial licence</a>.
-        </p>
+        <div class="btn-row">
+          <a class="btn btn--mint" href="/download/">Free trial</a>
+          <a class="btn btn--outline-light" href="/features/">See the features</a>
+        </div>
         <div class="hero__facts">
           <div class="fact"><span class="fact__value">{product.taxYear}</span><span class="fact__label">ATO tax tables</span></div>
           <div class="fact"><span class="fact__value">One app</span><span class="fact__label">Pay runs to BAS</span></div>

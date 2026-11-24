@@ -13,7 +13,7 @@ Jurnl is a desktop app. The books, payroll records and other data you enter are 
 
 ## What we collect on this website
 
-- **Trial licence requests:** your name, email, business name if you give it, how many people you pay and how many companies.
+- **Free trial requests:** your name, email, business name if you give it, how many people you pay and your computer type.
 - **Enquiries:** your name, email and message.
 
 This website doesn't use analytics or tracking cookies.

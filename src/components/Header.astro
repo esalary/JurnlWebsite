@@ -1,5 +1,5 @@
 ---
-import { sections, manual } from '../data/site';
+import { sections } from '../data/site';
 
 interface Props {
   section?: string;
@@ -21,8 +21,7 @@ const { section } = Astro.props;
           </a>
         ))
       }
-      <a href={manual.href} target="_blank" rel="noopener">Manual</a>
-      <a class="btn btn--primary" href="/download/">Download</a>
+      <a class="btn btn--primary" href="/download/">Free trial</a>
     </nav>
 
     <details class="mobile-nav">
@@ -33,8 +32,7 @@ const { section } = Astro.props;
       </summary>
       <nav class="mobile-nav__panel" aria-label="Main (mobile)">
         {sections.map((s) => <a href={s.href}>{s.title}</a>)}
-        <a href="/download/">Download</a>
-        <a href={manual.href} target="_blank" rel="noopener">User manual (PDF)</a>
+        <a href="/download/">Free trial</a>
         <a href="/contact/">Contact</a>
       </nav>
     </details>

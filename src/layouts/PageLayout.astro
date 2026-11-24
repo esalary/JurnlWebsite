@@ -7,12 +7,12 @@ import Screenshot from '../components/Screenshot.astro';
 import { sectionByKey } from '../data/site';
 
 const fm = Astro.props.frontmatter ?? Astro.props;
-const { title, description, section, intro, draft, screenshots = [] } = fm;
+const { title, description, section, intro, draft, screenshots = [], noindex = false } = fm;
 const sec = section ? sectionByKey(section) : undefined;
 const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
 ---
 
-<BaseLayout title={title} description={description} section={section}>
+<BaseLayout title={title} description={description} section={section} noindex={noindex}>
   <section class={`page-hero ${section ? `page-hero--${section}` : ''}`}>
     <div class="container stack" style="--gap: 18px">
       {

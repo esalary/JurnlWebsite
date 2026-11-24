@@ -1,28 +1,22 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import DownloadButtons from '../../components/DownloadButtons.astro';
 import { product } from '../../data/site';
 ---
 
-<BaseLayout title="Trial licence requested" description="Your Jurnl trial licence." noindex>
+<BaseLayout title="Thanks for your interest" description="Your Jurnl free trial." noindex>
   <section class="page-hero">
     <div class="container stack" style="--gap: 18px">
-      <h1 class="h1" style="font-size: clamp(2.125rem, 4.2vw, 3.25rem)">Thanks for trying Jurnl</h1>
-      <p class="lead muted">We'll email you a free trial licence shortly.</p>
+      <h1 class="h1" style="font-size: clamp(2.125rem, 4.2vw, 3.25rem)">Thanks for your interest in Jurnl</h1>
+      <p class="lead muted">We'll email you a link to download it shortly.</p>
     </div>
   </section>
   <div class="container page-body">
     <div class="page-body__content stack" style="--gap: 16px">
       <p>
-        The licence is a file ending in <strong>.licence</strong>, or a line of text starting <strong>JURNL-LICENCE-1</strong>. Enter it with
-        <strong>Licence…</strong> on Jurnl's first screen, or in Settings → Licence and updates.
-      </p>
-      <p>If you haven't installed Jurnl yet, you can start now: it works with one company and three employees until the licence arrives.</p>
-      <DownloadButtons />
-      <p>
-        If the email hasn't arrived within a business day, check your junk or spam folder, or email
+        If it hasn't arrived within a business day, check your junk or spam folder, or email
         <a href={`mailto:${product.email}`}>{product.email}</a>.
       </p>
+      <p>While you wait, see <a href="/features/">what Jurnl does</a> or read about <a href="/security/">how your data is kept safe</a>.</p>
     </div>
   </div>
 </BaseLayout>

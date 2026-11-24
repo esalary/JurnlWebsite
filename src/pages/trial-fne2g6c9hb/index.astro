@@ -1,0 +1,54 @@
+---
+// The hidden download page (see hiddenDownload in src/data/site.ts). Not linked, not indexed.
+import PageLayout from '../../layouts/PageLayout.astro';
+import DownloadButtons from '../../components/DownloadButtons.astro';
+import { download, manual, unlicensed, product } from '../../data/site';
+---
+
+<PageLayout
+  title="Download Jurnl"
+  description="Download Jurnl for Windows or Mac."
+  intro="Thanks for your interest in Jurnl. Download it for Windows or Mac below."
+  noindex
+>
+  <DownloadButtons />
+
+  <h2>Installing</h2>
+  <ul>
+    <li><strong>Open the file you downloaded:</strong> the Setup file on Windows, or the .pkg on a Mac. Jurnl installs for you alone, without administrator rights, and adds shortcuts.</li>
+    <li><strong>Jurnl keeps itself up to date.</strong> It looks for updates each time it starts and installs them when you close it, backing up your database first.</li>
+    {
+      download.channel === 'beta' && (
+        <li>
+          <strong>While the installers are in testing,</strong> Windows may say "Windows protected your PC" (choose More info, then Run anyway), and a Mac may
+          block the installer once (System Settings → Privacy &amp; Security → Open Anyway). Your browser may also ask you to keep the download.
+        </li>
+      )
+    }
+  </ul>
+  <p>
+    The <a href={manual.href} target="_blank" rel="noopener">user manual</a> ({manual.pages} pages, PDF) walks you through installing, setting up your company, pay runs,
+    invoices, bills, bank statements and reports.
+  </p>
+
+  <h2 id="licence">Your licence</h2>
+  <p>
+    Without a licence, Jurnl works with {unlicensed.text}. For more, email <a href={`mailto:${product.email}?subject=Jurnl%20trial%20licence`}>{product.email}</a> for a free trial licence: tell us how many people you pay and how many companies you have. Enter it with <strong>Licence…</strong> on Jurnl's first
+    screen, or in Settings → Licence and updates.
+  </p>
+
+  <h2>What you'll need</h2>
+  <ul>
+    <li>A Windows 10 or 11 computer (64-bit), or a Mac with Apple silicon (M1 or later).</li>
+    <li><strong>If you work alone,</strong> nothing else: keep the company in a folder on your own computer. Jurnl copies your backups to a second place you choose, such as a USB drive.</li>
+    <li><strong>If others will work on it,</strong> a shared folder that everyone syncs from the same provider, for example all on OneDrive or all on Dropbox.</li>
+    <li>Your ABN and bank details to set up your company. The setup wizard walks you through the rest.</li>
+  </ul>
+
+  <h2>During the trial</h2>
+  <ul>
+    <li><strong>Everything works,</strong> with Single Touch Payroll through the ATO's Single Touch Lite file until direct lodgement from Jurnl is approved.</li>
+    <li><strong>If a licence ends,</strong> Jurnl still opens, shows, reports and exports everything, and pay runs already started can be finished. Only new employees, companies and pay runs need a new licence.</li>
+    <li><strong>Read-only copies</strong> for your accountant or lender never need a licence.</li>
+  </ul>
+</PageLayout>

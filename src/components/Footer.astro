@@ -1,5 +1,5 @@
 ---
-import { product, sections, manual } from '../data/site';
+import { product, sections } from '../data/site';
 const year = new Date().getFullYear();
 const features = sections.find((s) => s.key === 'features')!.pages.slice(1);
 ---
@@ -21,9 +21,7 @@ const features = sections.find((s) => s.key === 'features')!.pages.slice(1);
           <a href="/security/">Security</a>
           <a href="/salary-packaging/">For salary packaging</a>
           <a href="/faq/">FAQ</a>
-          <a href="/download/">Download</a>
-          <a href="/download/#licence">Free trial licence</a>
-          <a href={manual.href} target="_blank" rel="noopener">User manual (PDF)</a>
+          <a href="/download/">Free trial</a>
           <a href="/contact/">Contact</a>
         </div>
       </div>

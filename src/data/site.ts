@@ -28,9 +28,14 @@ export const download = {
   },
 };
 
-// User manual: replace public/downloads/Jurnl-User-Manual.pdf with each release (same file name).
+// The hidden download page: not linked from anywhere and not indexed. Send this address to people
+// after they register their interest. To retire it, rename the folder in src/pages and public (and
+// HIDDEN_DOWNLOAD in api/src/functions/trial.js); old links then stop working.
+export const hiddenDownload = '/trial-fne2g6c9hb/';
+
+// User manual (on the hidden page only): replace public/trial-fne2g6c9hb/Jurnl-User-Manual.pdf with each release.
 export const manual = {
-  href: '/downloads/Jurnl-User-Manual.pdf',
+  href: '/trial-fne2g6c9hb/Jurnl-User-Manual.pdf',
   version: '2.6.3',
   size: '450 KB',
   pages: 16,
